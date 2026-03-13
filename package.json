@@ -1,0 +1,31 @@
+{
+  "name": "@duyet/skills",
+  "version": "1.0.0",
+  "description": "Production-quality skills for Claude Code agents - engineering discipline, task decomposition, frontend design, and more",
+  "author": {
+    "name": "duyet",
+    "url": "https://github.com/duyet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duyet/skills"
+  },
+  "keywords": [
+    "claude-code",
+    "skills",
+    "agents",
+    "engineering",
+    "task-decomposition",
+    "frontend-design",
+    "orchestration"
+  ],
+  "scripts": {
+    "list": "find . -name 'SKILL.md' -not -path './node_modules/*' | sed 's|/SKILL.md||' | sed 's|^./||'",
+    "format": "prettier --write '**/SKILL.md' README.md",
+    "validate": "node scripts/validate-skills.js",
+    "generate:readme": "node scripts/generate-readme.js"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  }
+}
