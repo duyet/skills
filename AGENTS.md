@@ -68,11 +68,8 @@ Styles            Validation       Indexes
 
 ## Related Skills
 
-- `task-decomposition` - Breaking down complex tasks
-- `orchestration` - Tool selection and parallel execution
-- `team-coordination` - Spawning and managing team agents
-- `quality-gates` - Verification before completion
-- `engineering-discipline` - Core development principles
+- `orchestration` - Task decomposition, parallel execution, and team agent coordination
+- `quality-gates` - Engineering discipline and verification before completion
 
 ---
 
