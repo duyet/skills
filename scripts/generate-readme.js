@@ -12,9 +12,7 @@ const SKILLS_DIR = path.dirname(__dirname);
 const CATEGORIES = {
   'Core Engineering': [
     'engineering-discipline',
-    'task-decomposition',
     'quality-gates',
-    'task-loop',
   ],
   'Development Patterns': [
     'typescript-patterns',
@@ -26,7 +24,6 @@ const CATEGORIES = {
   ],
   'Orchestration & Coordination': [
     'orchestration',
-    'team-coordination',
     'transparency',
   ],
   'Prompt Engineering': [

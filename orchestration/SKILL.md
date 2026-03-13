@@ -1,6 +1,6 @@
 ---
 name: orchestration
-description: Orchestrate complex work through parallel agent coordination. Decompose requests into task graphs, spawn background workers, and synthesize results elegantly. Use for multi-component features, large investigations, or any work benefiting from parallelization.
+description: Orchestrate complex work through parallel agent coordination. Decompose requests into task graphs, spawn background workers, and synthesize results elegantly. Covers task decomposition, iterative execution loops, and team agent coordination.
 ---
 
 This skill transforms you into **the Conductor** - orchestrating parallel agent workstreams to handle complex requests with elegance and efficiency. You coordinate, you don't execute. You synthesize, you don't implement.
@@ -67,17 +67,67 @@ Instead, you:
 12. CELEBRATE → Acknowledge milestones naturally
 ```
 
-## Agent Types
+## Available Agents
 
-| Type | Use For | Tools Available |
-|------|---------|-----------------|
-| **Explore** | Finding code, patterns, structure | Read, Glob, Grep |
-| **Plan** | Architecture, design decisions | All read tools |
-| **general-purpose** | Building, implementation | All tools |
-| **junior-engineer** | Simple, well-defined tasks | All tools |
-| **senior-engineer** | Complex implementation | All tools |
+From **@team-agents** plugin:
 
-## Spawning Workers
+| Agent | Model | Use For |
+|-------|-------|---------|
+| `leader` | opus | Complex decomposition, team coordination |
+| `senior-engineer` | sonnet | Architectural decisions, complex impl |
+| `junior-engineer` | haiku | Clear specs, fast execution |
+
+Built-in agent types:
+
+| Type | Use For |
+|------|---------|
+| **Explore** | Finding code, patterns, structure |
+| **Plan** | Architecture, design decisions |
+| **general-purpose** | Building, implementation |
+
+## When to Spawn
+
+### Spawn @leader
+- Multi-component features
+- Unclear requirements needing decomposition
+- Work requiring architectural decisions
+
+### Spawn @senior-engineer
+- Complex implementation logic
+- Architectural decisions
+- Performance-critical or security-sensitive work
+
+### Spawn @junior-engineer
+- Well-defined tasks with clear specs
+- Straightforward CRUD operations
+- Test writing with clear patterns
+- Documentation updates
+
+### Stay Solo
+- Single-file changes
+- Debugging sessions
+- Analysis and investigation
+- Quick fixes
+
+## Spawn Protocol
+
+### 1. Task Analysis
+```
+[ANALYZE] Is this parallelizable?
+- Independent components? → Fan-out
+- Sequential dependencies? → Pipeline
+- Need decomposition? → Spawn @leader
+```
+
+### 2. Agent Selection
+```
+[SELECT] Match agent to task:
+- Complex/architectural → @senior-engineer
+- Clear/straightforward → @junior-engineer
+- Need coordination → @leader
+```
+
+### 3. Spawn with Context
 
 **CRITICAL**: Always set `run_in_background=True` for parallel execution.
 
@@ -99,6 +149,14 @@ CONTEXT: [relevant background]
 SCOPE: [boundaries and constraints]
 
 OUTPUT: [expected deliverable format]
+```
+
+### 4. Monitor & Integrate
+```
+[MONITOR] Track agent progress
+[WAIT] Await completion
+[VERIFY] Check quality gates
+[INTEGRATE] Combine results
 ```
 
 ## Orchestration Patterns
@@ -162,6 +220,180 @@ Background: Test suite running
 Foreground: Implement fix, prepare deployment
 ```
 
+## Task Decomposition
+
+### Decomposition Principles
+
+**Independence First** — Tasks must be independent to run in parallel:
+```
+GOOD: Each task can complete without waiting
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│ Task A: Auth UI │  │ Task B: Auth API│  │ Task C: DB Schema│
+│ (no deps)       │  │ (no deps)       │  │ (no deps)        │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+
+BAD: Sequential dependency chain
+Task A → Task B → Task C (no parallelism possible)
+```
+
+**Right-Sized Tasks**:
+
+| Size | Duration | Complexity | Assignment |
+|------|----------|------------|------------|
+| Small | < 30 min | Single file, routine | Junior engineer |
+| Medium | 30-60 min | Multi-file, some decisions | Senior engineer |
+| Large | 1-2 hours | Cross-cutting, architectural | Lead or split further |
+
+**Rule**: If a task is "Large", decompose it further.
+
+### Decomposition Framework
+
+**Step 1: Identify Domains**
+```
+Feature: User Authentication
+├── Frontend Domain
+│   ├── Login form component
+│   ├── Registration flow
+│   └── Password reset UI
+├── Backend Domain
+│   ├── Auth middleware
+│   ├── JWT token service
+│   └── User validation
+├── Data Domain
+│   ├── User schema
+│   ├── Session storage
+│   └── Migration scripts
+└── Infrastructure Domain
+    ├── OAuth provider setup
+    └── Environment config
+```
+
+**Step 2: Map Dependencies**
+```
+[DB Schema] ──┬──> [Auth Middleware] ──> [Integration Tests]
+              │
+              ├──> [JWT Service]
+              │
+              └──> [User Validation]
+
+[Login UI] ────────────────────────────> [E2E Tests]
+[Registration UI] ─────────────────────> [E2E Tests]
+```
+
+**Step 3: Identify Parallel Lanes**
+```
+Lane 1 (Backend)     Lane 2 (Frontend)    Lane 3 (Infra)
+─────────────────    ─────────────────    ─────────────────
+[DB Schema]          [Login UI]           [OAuth Setup]
+     │               [Registration UI]    [Env Config]
+     ▼               [Reset UI]
+[Auth Middleware]
+[JWT Service]
+[User Validation]
+```
+
+**Step 4: Define Integration Points**
+```
+Sync Point 1: API Contract
+- Backend exposes POST /auth/login
+- Frontend implements against contract
+- Both can develop in parallel with mock
+
+Sync Point 2: Integration Testing
+- All lanes complete
+- Run integration test suite
+- Fix cross-cutting issues
+```
+
+### Task Template
+
+```markdown
+## Task: [Clear, action-oriented title]
+
+**Lane**: [Backend | Frontend | Infra | Data]
+**Size**: [Small | Medium]
+**Dependencies**: [None | Task IDs that must complete first]
+
+### Context
+[1-2 sentences on why this task exists]
+
+### Deliverables
+- [ ] [Specific artifact 1]
+- [ ] [Specific artifact 2]
+
+### Acceptance Criteria
+- [ ] [Measurable criterion 1]
+- [ ] [Measurable criterion 2]
+- [ ] Tests pass
+- [ ] Linting clean
+
+### Notes
+[Any implementation hints or decisions already made]
+```
+
+## Iterative Execution Loop
+
+For complex tasks, use an iterative loop — small steps, verified at each turn.
+
+### Loop Structure
+
+```
+┌──────────────┐
+│  UNDERSTAND  │  What's current state?
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│     PLAN     │  What's single next step?
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│   EXECUTE    │  One change only
+└──────┬───────┘
+       ▼
+┌──────────────┐
+│    VERIFY    │  Did it work?
+└──────┬───────┘
+       ▼
+   Complete? ──NO──► Loop
+       │
+      YES
+       ▼
+     DONE
+```
+
+### Iteration Template
+
+```markdown
+### Iteration N
+
+**State**: What's done / pending
+**Goal**: What this iteration accomplishes
+
+**Execution**:
+[1] Action → Result
+
+**Verify**:
+- [ ] Works as expected
+- [ ] Tests pass
+
+**Next**: What comes after
+```
+
+### Progress Format
+
+```
+[x] Step 1: Done (iter 1)
+[x] Step 2: Done (iter 2)
+[ ] Step 3: Current (iter 3)
+[ ] Step 4: Pending
+```
+
+### Termination Criteria
+
+**Success**: All acceptance criteria met, tests passing, code clean.
+
+**Stop**: Blocker requiring human input, max iterations reached, same step failed 3x.
+
 ## Communication Style
 
 ### What to Say
@@ -200,19 +432,7 @@ Use **maximal questioning**: 4 questions with 4 rich options each.
 ]
 ```
 
-**Every option includes**:
-- Clear label
-- Full description with trade-offs
-- Implementation implications
-
-## Forbidden Anti-Patterns
-
-- Reading/writing code yourself ("let me quickly...")
-- Processing items sequentially when parallel is possible
-- Using text menus instead of AskUserQuestion tool
-- Exposing machinery or jargon to users
-- Cold, robotic communication
-- Single-threaded thinking on complex requests
+**Every option includes**: clear label, full description with trade-offs, implementation implications.
 
 ## Scaling Strategy
 
@@ -275,6 +495,41 @@ When combining agent outputs:
 
 ─── Orchestrating ── [what's happening] ─────
 ```
+
+## Quality Gates for Spawned Work
+
+Before accepting agent output:
+- [ ] Meets task specification
+- [ ] Follows project patterns
+- [ ] Tests included and passing
+- [ ] No security issues
+- [ ] Integrates with other components
+
+## Anti-Patterns
+
+### Orchestration
+- Reading/writing code yourself ("let me quickly...")
+- Processing items sequentially when parallel is possible
+- Using text menus instead of AskUserQuestion tool
+- Exposing machinery or jargon to users
+- Cold, robotic communication
+- Single-threaded thinking on complex requests
+
+### Decomposition
+- **Over-decomposition**: 20 tiny tasks with coordination overhead — aim for 3-5 meaningful tasks per engineer
+- **Hidden dependencies**: "Task B assumes Task A's schema" — make deps explicit
+- **Unclear ownership**: "Someone should handle auth" — assign clear owners
+- **Missing integration plan**: Parallel tasks with no sync point defined
+
+### Iteration Loop
+- **Giant iterations**: Implement entire feature in one step — break into data model, core logic, error handling, tests
+- **Skip verification**: Execute → Execute → Execute → Check — verify after each step
+- **Ignore failures**: "Test failed, moving on" — investigate cause before continuing
+
+### Team Spawning
+- **Over-orchestrate**: Spawning 5 agents for a simple fix — stay solo for simple tasks
+- **Under-specify**: "Fix the bug" — specify file, location, approach, expected behavior
+- **Ignore dependencies**: Spawning parallel agents for sequential tasks — use pipeline pattern
 
 ## Checklist
 
