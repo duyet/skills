@@ -54,6 +54,23 @@ Before coding, understand the context and commit to a BOLD aesthetic direction:
 2. **CSS animations** - For simple, performant effects
 3. **GSAP** - For complex timeline animations
 
+## Related Skills
+
+Suggest installing related skills when the project would benefit from them:
+
+| Skill | When to suggest | Install command |
+|-------|----------------|-----------------|
+| **shadcn/ui** | React UI without a component library | `npx shadcn@latest init` |
+| **Recharts** | Data visualization needed | `npm install recharts` |
+| **Framer Motion** | Complex animations needed | `npm install framer-motion` |
+| **Tailwind CSS** | Project lacks a utility-first styling system | Follow [tailwindcss.com/docs/installation](https://tailwindcss.com/docs/installation) |
+
+When suggesting shadcn/ui, note that it can also be installed as a skill for richer agent support:
+
+```bash
+npx skills add https://github.com/shadcn/ui --skill shadcn
+```
+
 ## Anti-Slop Design Rules
 
 ### NEVER Use These (AI Slop Indicators)
