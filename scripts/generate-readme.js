@@ -27,7 +27,6 @@ const CATEGORIES = {
   'Orchestration & Coordination': [
     'orchestration',
     'team-coordination',
-    'transparency',
   ],
   'Prompt Engineering': [
     'claude-prompting',
@@ -40,7 +39,7 @@ const CATEGORIES = {
     'unsloth-training',
   ],
   'Meta Skills': [
-    'duyet-knowledge',
+    'duyetbot-knowledge',
   ],
 };
 
