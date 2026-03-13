@@ -16,6 +16,8 @@ The skills ecosystem enables:
 
 For more information:
 - [skills.sh](https://skills.sh) - Browse and discover skills
+- [What are Skills?](https://agentskills.io/what-are-skills) - Understanding the skills ecosystem
+- [Skills Specification](https://agentskills.io/specification) - Technical specification for skills
 - [Skills Documentation](https://github.com/vercel-labs/agent-skills) - Learn how to create skills
 - [duyet/claude-plugins](https://github.com/duyet/claude-plugins) - Full plugin collection with agents and commands
 
@@ -92,9 +94,7 @@ bunx skills add duyet/skills --skill frontend-design
 
 | Skill | Description |
 |-------|-------------|
-| `claude-prompting` | Prompt engineering guidance for Claude (Anthropic) |
-| `gemini-prompting` | Prompt engineering guidance for Gemini (Google) |
-| `grok-prompting` | Prompt engineering guidance for Grok (xAI) |
+| `prompt-engineering` | Comprehensive guidance for Claude (Anthropic), Gemini (Google), and Grok (xAI) with reference documentation |
 
 ### Domain Specific
 
