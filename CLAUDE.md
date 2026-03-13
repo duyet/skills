@@ -11,7 +11,7 @@
 ## Installation
 
 ```bash
-npx skills add duyet/skills
+bunx skills add duyet/skills
 ```
 
 ## Versioning Rules
@@ -66,36 +66,36 @@ Step-by-step instructions or patterns.
 
 ### List all skills
 ```bash
-npm run list
+bun run list
 ```
 
 ### Format skill files
 ```bash
-npm run format
+bun run format
 ```
 
 ### Validate structure
 ```bash
-npm run validate
+bun run validate
 ```
 
 ### Generate README
 ```bash
-npm run generate:readme
+bun run generate:readme
 ```
 
 ## Adding a New Skill
 
 1. Create new directory: `mkdir skills/new-skill`
 2. Create `SKILL.md` with frontmatter
-3. Run validation: `npm run validate`
-4. Update README: `npm run generate:readme`
+3. Run validation: `bun run validate`
+4. Update README: `bun run generate:readme`
 5. Commit: `git commit -m "feat(skills): add new-skill"`
 
 ## Removing a Skill
 
 1. Remove directory: `rm -rf skills/old-skill`
-2. Update README: `npm run generate:readme`
+2. Update README: `bun run generate:readme`
 3. Bump patch version in `package.json`
 4. Commit: `git commit -m "fix(skills): remove old-skill"`
 

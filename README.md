@@ -4,18 +4,55 @@
 
 A curated collection of agent skills covering engineering discipline, task decomposition, frontend design, orchestration patterns, and more.
 
+## Skills
+
+**Skills** are reusable instructions and patterns that AI agents can leverage to perform specific tasks. Each skill is self-contained with metadata (name, description) and detailed instructions that agents use to execute work consistently.
+
+The skills ecosystem enables:
+- **Compose** - Build complex workflows from simple skills
+- **Share** - Distribute skills across teams and projects
+- **Version** - Track changes and improvements over time
+- **Discover** - Find and use skills from the community
+
+For more information:
+- [skills.sh](https://skills.sh) - Browse and discover skills
+- [Skills Documentation](https://github.com/vercel-labs/agent-skills) - Learn how to create skills
+- [duyet/claude-plugins](https://github.com/duyet/claude-plugins) - Full plugin collection with agents and commands
+
+## About This Repository
+
+This repository contains skills that I use daily for software development, ranging from core engineering principles to specialized domain knowledge. These skills have been refined through real-world usage and help maintain consistent quality across projects.
+
+Each skill is self-contained in its own folder with a `SKILL.md` file containing the instructions and metadata that AI agents use. Browse through these skills to get inspiration for your own skills or to understand different patterns and approaches.
+
+### Categories
+
+- **Core Engineering** - Fundamental principles for sustainable code
+- **Development Patterns** - Language and framework best practices
+- **Frontend & Design** - UI/UX guidelines and patterns
+- **Orchestration** - Multi-agent coordination patterns
+- **Prompt Engineering** - Provider-specific guidance
+- **Domain Specific** - ClickHouse, ML training, monitoring
+- **Meta Skills** - Personal knowledge and context
+
 ## Install
 
-```bash
-npx skills add duyet/skills
-```
+Install via the open [Skills](https://skills.sh) ecosystem. Works with:
+- Claude Code
+- Cursor
+- GitHub Copilot
+- Gemini
+- Windsurf
+- And 15+ other AI agents
 
-Or install individual skills:
-
 ```bash
-npx skills add duyet/skills --skill engineering-discipline
-npx skills add duyet/skills --skill task-decomposition
-npx skills add duyet/skills --skill frontend-design
+# Install all skills
+bunx skills add duyet/skills
+
+# Install individual skills
+bunx skills add duyet/skills --skill engineering-discipline
+bunx skills add duyet/skills --skill task-decomposition
+bunx skills add duyet/skills --skill frontend-design
 ```
 
 ## Available Skills
@@ -79,16 +116,16 @@ npx skills add duyet/skills --skill frontend-design
 
 ```bash
 # List all skills
-npm run list
+bun run list
 
 # Format all skill files
-npm run format
+bun run format
 
 # Validate skill structure
-npm run validate
+bun run validate
 
 # Generate/update README
-npm run generate:readme
+bun run generate:readme
 ```
 
 ## Versioning
@@ -107,7 +144,7 @@ MIT
 
 ## Author
 
-**duyet** - [GitHub](https://github.com/duyet)
+**duyet** - [GitHub](https://github.com/duyet) | [duyet.net](https://duyet.net)
 
 ## Related
 
