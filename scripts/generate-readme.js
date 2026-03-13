@@ -11,28 +11,18 @@ const path = require('path');
 const SKILLS_DIR = path.dirname(__dirname);
 const CATEGORIES = {
   'Core Engineering': [
-    'engineering-discipline',
-    'task-decomposition',
     'quality-gates',
-    'task-loop',
+    'orchestration',
   ],
   'Development Patterns': [
     'typescript-patterns',
     'backend-api-patterns',
-    'react-nextjs-patterns',
   ],
   'Frontend & Design': [
     'frontend-design',
   ],
-  'Orchestration & Coordination': [
-    'orchestration',
-    'team-coordination',
-    'transparency',
-  ],
   'Prompt Engineering': [
-    'claude-prompting',
-    'gemini-prompting',
-    'grok-prompting',
+    'prompt-engineering',
   ],
   'Domain Specific': [
     'clickhouse',
@@ -40,7 +30,8 @@ const CATEGORIES = {
     'unsloth-training',
   ],
   'Meta Skills': [
-    'duyet-knowledge',
+    'duyetbot-knowledge',
+    'skills-maintenance',
   ],
 };
 
