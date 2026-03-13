@@ -1,6 +1,6 @@
 ---
 name: quality-gates
-description: Systematic quality verification procedures for code review and delivery. Use when validating completed work, conducting code reviews, or ensuring production readiness.
+description: Systematic quality verification and engineering discipline for sustainable, production-ready code. Use when validating completed work, conducting code reviews, or ensuring production readiness.
 ---
 
 This skill provides structured quality gate procedures for verifying code quality, security, performance, and production readiness before delivery.
@@ -319,3 +319,39 @@ npm run lint && npm run type-check && npm run test:coverage && npm run build && 
 - [ ] Monitoring configured
 - [ ] Stakeholders notified
 - [ ] Deployment window confirmed
+
+## Engineering Discipline
+
+### Core Rules
+
+**No Shortcuts**
+- Every solution must be sustainable long-term
+- Temporary fixes become permanent debt
+- If it feels like a workaround, it is
+
+**Minimal Changes**
+- One logical change per commit
+- Touch only what's necessary
+- Edit over Write (preserve context)
+
+### Decision Rules
+
+**When to Refactor**
+
+Refactor when adding features is painful, bugs cascade, or code confuses the team.
+Don't refactor when code works and rarely changes, or there's no immediate need.
+
+**When to Abstract**
+
+Abstract when a pattern appears 3+ times and the abstraction reduces complexity.
+Don't abstract when there are only 1-2 occurrences or the abstraction would be more complex than the duplication.
+
+### Anti-Patterns
+
+| Bad | Why | Good |
+|-----|-----|------|
+| Magic numbers | Unclear intent | Named constants |
+| God objects | Unmaintainable | Single responsibility |
+| Copy-paste | Bug multiplication | Extract shared logic |
+| Commented code | Confusion | Git history |
+| Premature optimization | Wrong focus | Measure first |

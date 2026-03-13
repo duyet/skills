@@ -11,7 +11,6 @@ const path = require('path');
 const SKILLS_DIR = path.dirname(__dirname);
 const CATEGORIES = {
   'Core Engineering': [
-    'engineering-discipline',
     'task-decomposition',
     'quality-gates',
     'task-loop',
