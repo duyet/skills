@@ -61,7 +61,7 @@ function main() {
   let validCount = 0;
 
   for (const entry of entries) {
-    if (entry.isDirectory() && entry.name !== 'scripts' && !entry.name.startsWith('.')) {
+    if (entry.isDirectory() && entry.name !== 'scripts' && entry.name !== 'bin' && entry.name !== 'node_modules' && !entry.name.startsWith('.')) {
       if (validateSkill(path.join(SKILLS_DIR, entry.name))) {
         validCount++;
       }

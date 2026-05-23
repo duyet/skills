@@ -1,6 +1,6 @@
 {
   "name": "@duyet/skills",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Production-quality skills for Claude Code agents - engineering discipline, task decomposition, frontend design, and more",
   "author": {
     "name": "duyet",
@@ -9,6 +9,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/duyet/skills"
+  },
+  "bin": {
+    "skills": "./bin/skills.js"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "keywords": [
     "claude-code",
