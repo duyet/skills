@@ -6,15 +6,26 @@ A curated collection of agent skills covering engineering discipline, task decom
 
 ## Install
 
+Requires Node 18+.
+
 ```bash
+# Install all skills into .claude/skills/
 npx skills add duyet/skills
+
+# Install a single skill
+npx skills add duyet/skills --skill clickhouse
+
+# Custom destination
+npx skills add duyet/skills --dest ~/.claude/skills
+
+# Pin to a branch or tag
+npx skills add duyet/skills@master
+
+# Works against any GitHub repo containing SKILL.md files
+npx skills add duyet/codex-claude-plugins --skill github-workflow
 ```
 
-Or install individual skills:
-
-```bash
-npx skills add duyet/skills --skill <skill-name>
-```
+Set `GITHUB_TOKEN` in the environment to raise the GitHub API rate limit.
 
 ## Available Skills
 
